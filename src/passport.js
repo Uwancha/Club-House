@@ -8,10 +8,11 @@ import { UserModel } from "./models/usermodel.js";
 
 
 passport.use(
-    new LocalStrategy({userField: "email", passwordField: "password"}, async (email, password, done) => {
-        const user = await UserModel.findOne({email}).exec()
+    new LocalStrategy({usernameField: "email", passwordField: "password"}, async (email, password, done) => {
 
         try {
+            const user = await UserModel.findOne({email: email}).exec()
+
             if (!user) {
                 return done('null', false, {message: "Incorrect email"} )
             }
