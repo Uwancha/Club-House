@@ -1,15 +1,23 @@
 import { config as configDotenv } from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
-import  path from "path";
+import path from "path";
 import cookieParser from "cookie-parser";
 import compression from "compression";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
 import createError from "http-errors";
+import { passport } from "./passport.js";
+import session  from "express-session";
 
+// Routes
+import { userRouter as userRoute } from "./routes/user.js";
+
+// Dotenv 
 configDotenv();
 
+
+// connect to database
 const mongoDB = process.env.MONGODB_URI;
 
 const options = {
@@ -28,7 +36,7 @@ db.once("open", () => {
 })
 
 
-
+// Intialize the app
 const app = express()
 
 const currentModuleDir = path.dirname(new URL(import.meta.url).pathname);
@@ -49,24 +57,45 @@ app.use(helmet());
 // Compress all routes 
 app.use(compression());
 
-
-
+// Set limit to 
 const limiter = rateLimit({
   windowMs: 1 * 60 * 1000,
   max: 20
 })
 
-
 app.use(limiter)
 
+// Set session middleware
+app.use(session({
+  secret: process.env.SECRET, 
+  resave:false, 
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 1000 * 60 * 24
+  }
+}))
+
+// Intialize passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Set local variable
+app.use((req, res, next) => {
+  res.locals.user = req.user
+  next()
+})
+
+// Handle routes
+app.get('/', (req, res) => res.render("index"));
+app.use("/", userRoute);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use((err, req, res, next) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
