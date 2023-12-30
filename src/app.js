@@ -11,6 +11,7 @@ import { passport } from "./passport.js";
 import session  from "express-session";
 
 // Routes
+import { indexRouter as indexRouter } from "./routes/index.js";
 import { userRouter as userRoute } from "./routes/user.js";
 
 // Dotenv 
@@ -86,7 +87,7 @@ app.use((req, res, next) => {
 })
 
 // Handle routes
-app.get('/', (req, res) => res.render("index"));
+app.get('/', indexRouter);
 app.use("/", userRoute);
 
 // catch 404 and forward to error handler
