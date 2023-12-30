@@ -4,4 +4,27 @@ html
     title Club House
   body
 
+    .header
+
+      .logo
+        li
+          a(href='/') Members Only
+      
+      .nav
+         
+        .div
+          if (!user)
+            a(href='/login') Login
+            a(href='/signup') Sign Up
+          else
+            .div
+
+              if (!user.member)
+                a(href='/join') Join Club
+              a(href='/createmessage') New Message
+
+              a(href='/logout') Log Out
+              h1=user.email
+
+
     block content
