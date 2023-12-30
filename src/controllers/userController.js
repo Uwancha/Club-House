@@ -1,5 +1,8 @@
+import { config as configDotenv } from "dotenv";
 import bcrypt from "bcrypt";
 import { body, validationResult } from "express-validator";
+
+configDotenv();
 
 // User model
 import { UserModel } from "../models/usermodel.js";
@@ -119,4 +122,75 @@ const handleLoggingIn = async (req, res, next) => {
     })(req, res, next)
 }
 
-export { getSignupForm, signUpUser, getLoginForm, handleLoggingIn}
+// Get user join form
+const getJoinForm = async (req, res) => {
+    res.render("join_form", {
+        title: "Join Club"
+    })
+}
+
+// Join user on passcode entry
+const joinUser =[
+    body('passcode', 'Please enter passcode')
+        .trim()
+        .escape(),
+
+    async (req, res, next) => {
+        try {
+            const errors = validationResult(req)
+
+            // Check for errors
+            if (!errors.isEmpty()) {
+                return res.render('join_form', {
+                    title: "Join CLub",
+                    errors: errors.array(),
+                });
+            }
+
+            const user = await UserModel.findOne({name: req.user.name});
+
+             // Check if the user is found
+             if (!user) {
+                return res.status(404).send("User not found");
+            }
+
+            // Update membership status on successfull passcode entry
+            const passcode = process.env.PASSCODE
+
+            if (passcode === req.body.passcode) {
+                const updatedUser =  await UserModel.findByIdAndUpdate(
+                    req.user._id, {
+                        admin: false,
+                        member: true
+                    }, 
+                    {
+                        new: true
+                    }
+                )
+
+                res.redirect('/')
+            } else {
+                // Incorrect passcode
+                return res.render('join_form', {
+                    title: "Join Club",
+                    errors: [{ msg: "Incorrect passcode" }],
+                });
+            }
+
+        } catch (error) {
+            // Handle any unexpected errors
+            console.error("Error during user registration:", error);
+            return next(error) 
+        }
+    }
+        
+]
+
+export { 
+    getSignupForm, 
+    signUpUser, 
+    getLoginForm, 
+    handleLoggingIn,
+    getJoinForm,
+    joinUser,
+}
