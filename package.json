@@ -1,18 +1,17 @@
 {
   "name": "clubhouse",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Club house app",
   "type": "module",
   "scripts": {
     "devstart": "nodemon --exec babel-node src/app.js",
-    "build": "babel src -d dist"
+    "build": "babel src -d dist",
+    "start": "node dist/app.js"
   },
   "keywords": [],
   "author": "Sitota Alemu",
   "license": "ISC",
   "dependencies": {
-    "@babel/core": "^7.23.6",
-    "@babel/preset-env": "^7.23.6",
     "bcrypt": "^5.1.1",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.6",
@@ -30,6 +29,8 @@
     "pug": "^3.0.2"
   },
   "devDependencies": {
-    "@babel/node": "^7.22.19"
+    "@babel/core": "^7.23.7",
+    "@babel/node": "^7.22.19",
+    "@babel/preset-env": "^7.23.7"
   }
 }
