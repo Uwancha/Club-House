@@ -83,7 +83,7 @@ const signUpUser = [
 
         const newUser = await user.save()
 
-        res.send(newUser)
+        res.redirect("/login")
     }
 ];
 
@@ -114,6 +114,10 @@ const handleLoggingIn = async (req, res, next) => {
             if (loginErr) {
                 return next(loginErr)
             }
+
+            // persist user
+            req.session.user = user;
+
 
             // Login successfull, redirect to homepage
             res.redirect("/")
