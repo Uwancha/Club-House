@@ -2,4 +2,22 @@ extends layout
 
 block content
 
-    h2 Holla World! 
+    if messages.length
+        each message in messages
+            p=message.createdAt
+
+            - var postedBy = message.user
+
+            if user && user.member
+                if postedBy
+                    p posted by: #{postedBy.name}
+            else
+                p Anonymous
+            p=message.title
+            p=message.text
+
+            if user && user.admin
+                .delete
+                    a(href=`/message/${message._id}`) Delete
+    else
+        p No messages
