@@ -1,0 +1,16 @@
+extends layout 
+
+block content
+
+    if nomessage
+        p= nomessage
+
+    if message
+        .delete
+            p Are you really gonna delete this message?
+
+            form(method='POST')
+                div
+                    input(type='hidden', name='messageid', value=message._id )
+
+                button(type='submit') Delete

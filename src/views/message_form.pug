@@ -1,0 +1,20 @@
+extends layout
+
+block content
+
+    h1=title 
+
+    .form
+        form(method='POST')
+            label(for='title') title:
+            input(type='text', placeholder='title' name='title' required)
+            label(for='text') text:
+            textarea(name="message", cols="30", rows="10" required)
+
+            if errors
+                .errors
+                ul
+                    for error in errors
+                        li= error.msg
+
+            button(type='submit') Send
