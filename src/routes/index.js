@@ -1,10 +1,10 @@
 import express from "express";
-import { listAnonymousMessages } from "../controllers/messageController.js"
+import { messages } from "../controllers/messageController.js"
 
 
 const router = express.Router();
 
-// Get anonymous messages for non members
-router.get('/', listAnonymousMessages)
+// Display all messages
+router.get('/', messages);
 
 export { router as indexRouter }
