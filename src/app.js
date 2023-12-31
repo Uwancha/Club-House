@@ -13,6 +13,7 @@ import session  from "express-session";
 // Routes
 import { indexRouter as indexRouter } from "./routes/index.js";
 import { userRouter as userRoute } from "./routes/user.js";
+import { messageRouter } from "./routes/message.js";
 
 // Dotenv 
 configDotenv();
@@ -87,8 +88,9 @@ app.use((req, res, next) => {
 })
 
 // Handle routes
-app.get('/', indexRouter);
+app.get("/", indexRouter);
 app.use("/", userRoute);
+app.use("/", messageRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
