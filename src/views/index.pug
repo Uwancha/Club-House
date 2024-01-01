@@ -15,9 +15,9 @@ block content
                     if user && user.member
                         if postedBy
                             p by: #{postedBy.name}
+                            p=message.createdAt
                     else
                         p Anonymous
-                    p=message.createdAt
                     h4=message.text
 
                     if user && user.admin
