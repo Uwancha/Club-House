@@ -2,14 +2,15 @@ extends layout
 
 block content
 
-    h1=title 
-
     .form
+
+        h1=title 
+
         form(method='POST')
-            label(for='title') title:
+            label(for='title') Title:
             input(type='text', placeholder='title' name='title' required)
-            label(for='text') text:
-            textarea(name="message", cols="30", rows="10" required)
+            label(for='text') Message:
+            input(type="text" name="message", placeholder="message" required)
 
             if errors
                 .errors

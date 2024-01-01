@@ -4,9 +4,9 @@ import { getMessageForm, postMessage, getDeleteMessage, deleteMessage } from "..
 const router = express.Router()
 
 
-router.get("/message/create", getMessageForm);
-router.post("/message/create", postMessage);
-router.get("/message/:id", getDeleteMessage)
-router.post("/message/:id", deleteMessage)
+router.get("/create", getMessageForm);
+router.post("/create", postMessage);
+router.get("/:id", getDeleteMessage)
+router.post("/:id", deleteMessage)
 
 export { router as messageRouter }

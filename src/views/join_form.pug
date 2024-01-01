@@ -2,9 +2,10 @@ extends layout
 
 block content
 
-    h1=title 
-
     .form
+    
+        h1=title 
+
         form(method='POST')
             label(for='passcode') Passcode:
             input(type='text', placeholder='passcode' name='passcode' required)

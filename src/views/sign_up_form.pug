@@ -2,9 +2,10 @@ extends layout
 
 block content
 
-    h1=title 
-
     .form
+
+        h1=title 
+
         form(method='POST')
             label(for='name') Name:
             input(type='text', placeholder='name' name='name' required)

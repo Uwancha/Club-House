@@ -1,0 +1,154 @@
+body {
+    box-sizing: border-box;
+    margin: 0;
+    background-color: #fff;
+    color: black;
+}
+
+a {
+    text-decoration: none;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 2rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 #fff;
+}
+
+.logo * {
+    color: palevioletred;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav a {
+    color: #fff;
+    background-color: palevioletred;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 20px;
+}
+
+.nav > :hover {
+    opacity: .7;
+}
+
+.main {
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem 0;
+}
+
+.main h2 {
+    text-align: center;
+    font-size: 28px;
+}
+
+.messages {
+    background-color: pink;
+    border-radius: 8px;
+    padding: 20px
+}
+
+.messages h3 {
+    font-weight: 800;
+    font-size: 24px;
+}
+
+.messages p {
+    font-weight: 200;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    background-color: aliceblue;
+    margin: 8rem auto;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+}
+
+.form h1 {
+    text-align: center;
+}
+  
+input {
+    border: none;
+    border-radius: 4px;
+    background-color: #fff;
+    padding: .7rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    font-size: 16px;
+}
+  
+input:focus {
+    outline: none;
+    border: solid 2px turquoise;
+}
+  
+input::placeholder {
+    color: rgba(0, 0, 0);
+    font-size: 16px;
+}
+  
+form label {
+    display: block;
+    margin-bottom: .5rem;
+    font-size: 18px;
+    font-weight: 700;
+}
+  
+button {
+    margin: 0 auto;
+    border: none;
+    background-color: pink;
+    color: #fff;
+    padding: .5rem 1rem;
+    font-size: 18px;
+    border-radius: 6px;
+}
+  
+button:hover {
+    opacity: .6;
+}
+  
+.confirm {
+    text-align: center;
+    margin-top: 5rem;
+}
+  
+.confirm p {
+    font-size: 18px;
+    margin-bottom: 2rem;
+}
+  
+.delete {
+    text-align: center;
+    margin-top: 10rem;
+}
+  
+.errors {
+    color: palevioletred;
+    font-size: 18px;
+    font-weight: 700;
+    margin-left: -2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+  
+.err h2{
+    text-align: center;
+  }

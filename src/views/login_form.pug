@@ -2,9 +2,10 @@ extends layout
 
 block content
 
-    h1=title 
-
     .form
+
+        h1=title
+
         form(method='POST')
             label(for='email') Email:
             input(type='email', placeholder='email' name='email' required)

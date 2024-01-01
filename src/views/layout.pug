@@ -2,29 +2,27 @@ doctype html
 html
   head
     title Club House
+    link(rel="stylesheet", href="stylesheet/styles.css")
   body
 
     .header
 
       .logo
-        li
+        h1 
           a(href='/') Members Only
       
       .nav
-         
-        .div
+  
           if (!user)
             a(href='/login') Login
             a(href='/signup') Sign Up
           else
-            .div
-
               if (!user.member)
                 a(href='/join') Join Club
-              a(href='/message/create') New Message
+              a(href='/create') New Message
 
               a(href='/logout') Log Out
-              h1=user.email
+              p=user.email
 
 
     block content
