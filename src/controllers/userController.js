@@ -11,8 +11,6 @@ import { UserModel } from "../models/usermodel.js";
 import passport from "passport";
 
 const getSignupForm = async (req, res) => {
-    console.log("request hit")
-
     res.render("sign_up_form", {
         title: "Sign Up"
     } )

@@ -10,13 +10,9 @@ const messages = async (req, res) => {
         message.createdAt = new Date(message.createdAt)
         message.updatedAt = new Date(message.updatedAt);
 
-        console.log(new Date(Date.parse(message.createdAt)))
-
         message.createdAt = moment(message.createdAt).fromNow();
 
     });
-
-    console.log(messages);
 
     res.render("index", {
         title: "Messages",
