@@ -14,6 +14,9 @@ Club Housean app that enables registered users to create anonymous posts visible
 
 You can find the app [here](https://club-house.adaptable.app/)
 
+## Passcode
+Here's the passcode(case sensetive): NOT A MEMBER
+
 ## Tech Stack
 
 - Node.js

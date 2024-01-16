@@ -109,6 +109,11 @@ form label {
     font-size: 18px;
     font-weight: 700;
 }
+
+.passcode {
+    display: block;
+    margin-bottom: 1rem;
+}
   
 button {
     margin: 0 auto;
